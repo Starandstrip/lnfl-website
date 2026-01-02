@@ -96,7 +96,7 @@ export default function RegisterPage() {
           />
           <input
             name="phone"
-            placeholder="WhatsApp Number (with country code)"
+            placeholder="WhatsApp Number"
             required
             className="w-full p-3 border border-gray-300 rounded text-black placeholder-gray-500"
           />
