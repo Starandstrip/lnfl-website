@@ -11,7 +11,7 @@ const db = mysql.createPool({
 });
 
 // Email transporter (Hostinger SMTP)
-const transporter = nodemailer.createTransport({
+/* const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
   port: 587,
   secure: false,
@@ -19,7 +19,7 @@ const transporter = nodemailer.createTransport({
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
   },
-});
+}); */
 
 export async function POST(req) {
   try {
@@ -67,7 +67,7 @@ export async function POST(req) {
     const registrationId = result.insertId;
 
     // Send confirmation email
-    await transporter.sendMail({
+    /* await transporter.sendMail({
       from: `"LNFL" <${process.env.SMTP_USER}>`,
       to: email,
       subject: "LNFL Registration Successful",
@@ -77,7 +77,7 @@ export async function POST(req) {
         <p><strong>Registration ID:</strong> LNFL-${registrationId}</p>
         <p>We will contact you shortly on WhatsApp.</p>
       `,
-    });
+    }); */
 
     // WhatsApp message
     const whatsappMessage = encodeURIComponent(
