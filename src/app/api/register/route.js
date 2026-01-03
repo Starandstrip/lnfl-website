@@ -80,8 +80,13 @@ export async function POST(req) {
     }); */
 
     // WhatsApp message
-    const whatsappMessage = encodeURIComponent(
-      `Hi ${firstName}, thanks for registering for Lucknow Futsal League (LNFL).\nYour Registration ID is LNFL-${registrationId}.\nWe’ll contact you shortly with next steps.`
+    const whatsappMessage = encodeURIComponent(`Hi, I am ${firstName}.\n\n` +
+      `I am registering for Lucknow Futsal League (LNFL).\n` +
+      `Registration ID: ${registrationId}\n` +
+      `Applying as: ${type === "team" ? "Team" : "Individual"}\n` +
+      (type === "individual"
+        ? `Position: ${position}`
+        : `Team Name: ${teamName}\nPlayers Count: ${playersCount}`)
     );
 
     return NextResponse.json({
