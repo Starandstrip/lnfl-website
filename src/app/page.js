@@ -1,11 +1,25 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function HomePage() {
   return (
     <main>
-      {/* Hero Section */}
-      <section className="min-h-screen bg-gradient-to-b from-[#0b1f35] to-black flex items-center justify-center px-6">
-        <div className="max-w-4xl text-center">
+      {/* HERO SECTION */}
+      <section className="relative min-h-screen flex items-center justify-center px-6">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="https://images.unsplash.com/photo-1606925797300-0b35e9d1794e"
+            alt="Futsal players silhouette"
+            fill
+            priority
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0b1f35]/90 to-black/95"></div>
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 max-w-4xl text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Lucknow Futsal League
           </h1>
@@ -24,7 +38,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* What is LNFL */}
+      {/* WHAT IS LNFL */}
       <section className="bg-black py-16 px-6">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-2xl font-bold text-white mb-4">
@@ -33,21 +47,34 @@ export default function HomePage() {
           <p className="text-gray-400 max-w-3xl mx-auto">
             Lucknow Futsal League (LNFL) is a structured futsal league designed
             for players who want to enjoy competitive football alongside their
-            regular professional lives. No pro pressure — just quality football,
-            fair play, and great matchday experience.
+            professional lives. No pro pressure — just quality football, fair
+            play, and a great matchday experience.
           </p>
         </div>
       </section>
 
-      {/* Who is it for */}
+      {/* WHO IS IT FOR */}
       <section className="bg-[#0b0b0b] py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl font-bold text-white text-center mb-10">
             Who is it for?
           </h2>
 
+          {/* Image */}
+          <div className="mb-10">
+            <Image
+              src="https://images.unsplash.com/photo-1600679472829-3044539ce8ed"
+              alt="Futsal ground top view"
+              width={1200}
+              height={600}
+              className="rounded-lg mx-auto"
+            />
+          </div>
+
+          {/* Cards */}
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div className="border border-gray-800 rounded-lg p-6">
+              <div className="text-3xl mb-3">👨‍💼</div>
               <h3 className="text-white font-semibold mb-2">
                 Working Professionals
               </h3>
@@ -57,6 +84,7 @@ export default function HomePage() {
             </div>
 
             <div className="border border-gray-800 rounded-lg p-6">
+              <div className="text-3xl mb-3">⚽</div>
               <h3 className="text-white font-semibold mb-2">
                 Casual & Semi-Competitive Players
               </h3>
@@ -66,6 +94,7 @@ export default function HomePage() {
             </div>
 
             <div className="border border-gray-800 rounded-lg p-6">
+              <div className="text-3xl mb-3">🧑‍🤝‍🧑</div>
               <h3 className="text-white font-semibold mb-2">
                 Teams & Individuals
               </h3>
@@ -77,7 +106,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* How it works */}
+      {/* HOW IT WORKS */}
       <section className="bg-black py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl font-bold text-white text-center mb-10">
@@ -86,26 +115,26 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-4 gap-6 text-center">
             <div>
-              <span className="text-[#c8102e] font-bold text-xl">1</span>
-              <p className="text-gray-400 mt-2">
+              <div className="text-3xl mb-2">📝</div>
+              <p className="text-gray-400">
                 Register as Individual or Team
               </p>
             </div>
             <div>
-              <span className="text-[#c8102e] font-bold text-xl">2</span>
-              <p className="text-gray-400 mt-2">
+              <div className="text-3xl mb-2">📍</div>
+              <p className="text-gray-400">
                 Grouped by nearby location (pincode-based)
               </p>
             </div>
             <div>
-              <span className="text-[#c8102e] font-bold text-xl">3</span>
-              <p className="text-gray-400 mt-2">
+              <div className="text-3xl mb-2">🗓️</div>
+              <p className="text-gray-400">
                 League matches on weekends
               </p>
             </div>
             <div>
-              <span className="text-[#c8102e] font-bold text-xl">4</span>
-              <p className="text-gray-400 mt-2">
+              <div className="text-3xl mb-2">🏆</div>
+              <p className="text-gray-400">
                 Knockouts and finals
               </p>
             </div>
@@ -113,7 +142,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Season Snapshot */}
+      {/* SEASON SNAPSHOT */}
       <section className="bg-[#0b0b0b] py-16 px-6">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-2xl font-bold text-white mb-6">
