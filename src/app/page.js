@@ -9,7 +9,7 @@ export default function HomePage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1606925797300-0b35e9d1794e"
+            src="/hero-futsal.jpg"
             alt="Futsal players silhouette"
             fill
             priority
@@ -63,7 +63,7 @@ export default function HomePage() {
           {/* Image */}
           <div className="mb-10">
             <Image
-              src="https://images.unsplash.com/photo-1600679472829-3044539ce8ed"
+              src="/ground-top.jpg"
               alt="Futsal ground top view"
               width={1200}
               height={600}
