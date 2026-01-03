@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Header() {
   return (
-    <header className="bg-black text-white border-b border-gray-800">
+    <header className="bg-black border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         
         {/* Logo */}
@@ -15,7 +15,7 @@ export default function Header() {
             height={40}
             priority
           />
-          <span className="text-xl font-bold tracking-wide">
+          <span className="text-white text-xl font-bold tracking-wide">
             LNFL
           </span>
         </Link>
@@ -24,9 +24,23 @@ export default function Header() {
         <nav className="flex items-center gap-6 text-sm font-medium">
           <Link
             href="/"
-            className="text-white hover:text-red-600 transition"
+            className="text-gray-300 hover:text-white transition"
           >
             Home
+          </Link>
+
+          <Link
+            href="/about"
+            className="text-gray-300 hover:text-white transition"
+          >
+            About
+          </Link>
+
+          <Link
+            href="/format"
+            className="text-gray-300 hover:text-white transition"
+          >
+            League Format
           </Link>
 
           <Link
