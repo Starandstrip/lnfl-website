@@ -15,7 +15,7 @@ export default function HomePage() {
             priority
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0b1f35]/90 to-black/95"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0b1f35]/65 to-black/75"></div>
         </div>
 
         {/* Content */}
