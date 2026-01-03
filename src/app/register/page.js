@@ -4,69 +4,34 @@ import { useState } from "react";
 
 export default function RegisterPage() {
   const [type, setType] = useState("individual");
-  const [loading, setLoading] = useState(false);
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    setLoading(true);
-
-    const form = e.target;
-
-    const data = {
-      type,
-      firstName: form.firstName.value,
-      lastName: form.lastName.value,
-      email: form.email.value,
-      phone: form.phone.value,
-      position: type === "individual" ? form.position?.value : null,
-      teamName: type === "team" ? form.teamName?.value : null,
-      playersCount: type === "team" ? form.playersCount?.value : null,
-      pincode: form.pincode.value,
-      consent: form.consent.checked,
-    };
-
-    const res = await fetch("/api/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-
-    const result = await res.json();
-    setLoading(false);
-
-    if (result.success) {
-      window.location.href = result.whatsappUrl;
-    } else {
-      alert(result.error || "Registration failed");
-    }
-  }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
-      <div className="w-full max-w-xl bg-white rounded-lg shadow-lg p-8">
-        <h1 className="text-3xl font-bold text-center mb-6 text-black">
+    <div className="min-h-screen bg-gradient-to-b from-[#0b1f35] to-black flex items-center justify-center px-4">
+      <div className="w-full max-w-xl bg-white rounded-xl shadow-xl p-8">
+        
+        {/* Title */}
+        <h1 className="text-2xl font-bold text-center mb-6 text-black">
           LNFL Registration
         </h1>
 
-        {/* Type Switch */}
-        <div className="flex justify-center gap-4 mb-6">
+        {/* Tabs */}
+        <div className="flex justify-center gap-3 mb-6">
           <button
-            type="button"
             onClick={() => setType("individual")}
-            className={`px-5 py-2 font-semibold rounded ${
+            className={`px-4 py-2 rounded font-medium ${
               type === "individual"
-                ? "bg-red-600 text-white"
+                ? "bg-[#c8102e] text-white"
                 : "bg-gray-200 text-black"
             }`}
           >
             Individual
           </button>
+
           <button
-            type="button"
             onClick={() => setType("team")}
-            className={`px-5 py-2 font-semibold rounded ${
+            className={`px-4 py-2 rounded font-medium ${
               type === "team"
-                ? "bg-red-600 text-white"
+                ? "bg-[#c8102e] text-white"
                 : "bg-gray-200 text-black"
             }`}
           >
@@ -74,78 +39,74 @@ export default function RegisterPage() {
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Form */}
+        <form className="space-y-4">
           <input
-            name="firstName"
+            type="text"
             placeholder="First Name"
-            required
-            className="w-full p-3 border border-gray-300 rounded text-black placeholder-gray-500"
+            className="w-full border border-gray-300 rounded px-4 py-2 text-black"
           />
+
           <input
-            name="lastName"
+            type="text"
             placeholder="Last Name"
-            required
-            className="w-full p-3 border border-gray-300 rounded text-black placeholder-gray-500"
+            className="w-full border border-gray-300 rounded px-4 py-2 text-black"
           />
+
           <input
             type="email"
-            name="email"
             placeholder="Email"
-            required
-            className="w-full p-3 border border-gray-300 rounded text-black placeholder-gray-500"
+            className="w-full border border-gray-300 rounded px-4 py-2 text-black"
           />
+
           <input
-            name="phone"
+            type="tel"
             placeholder="WhatsApp Number"
-            required
-            className="w-full p-3 border border-gray-300 rounded text-black placeholder-gray-500"
+            className="w-full border border-gray-300 rounded px-4 py-2 text-black"
           />
+
+          {type === "team" && (
+            <>
+              <input
+                type="text"
+                placeholder="Team Name"
+                className="w-full border border-gray-300 rounded px-4 py-2 text-black"
+              />
+
+              <input
+                type="number"
+                placeholder="Number of players"
+                className="w-full border border-gray-300 rounded px-4 py-2 text-black"
+              />
+            </>
+          )}
+
           <input
-            name="pincode"
+            type="text"
             placeholder="Pincode"
-            required
-            className="w-full p-3 border border-gray-300 rounded text-black placeholder-gray-500"
+            className="w-full border border-gray-300 rounded px-4 py-2 text-black"
           />
 
           {type === "individual" && (
-            <select className="w-full p-3 border border-gray-300 rounded text-black">
+            <select className="w-full border border-gray-300 rounded px-4 py-2 text-black">
               <option>Forward</option>
-              <option>Midfield</option>
-              <option>Defence</option>
+              <option>Midfielder</option>
+              <option>Defender</option>
               <option>Goalkeeper</option>
               <option>Manager</option>
             </select>
           )}
 
-          {type === "team" && (
-            <>
-              <input
-                name="teamName"
-                placeholder="Team Name"
-                required
-                className="w-full p-3 border border-gray-300 rounded text-black placeholder-gray-500"
-              />
-              <input
-                name="playersCount"
-                type="number"
-                placeholder="Number of players"
-                required
-                className="w-full p-3 border border-gray-300 rounded text-black placeholder-gray-500"
-              />
-            </>
-          )}
-
           <label className="flex items-center gap-2 text-sm text-black">
-            <input type="checkbox" name="consent" required />
+            <input type="checkbox" />
             I agree to be contacted regarding LNFL.
           </label>
 
           <button
             type="submit"
-            disabled={loading}
-            className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded transition"
+            className="w-full bg-[#c8102e] hover:bg-red-700 text-white font-semibold py-3 rounded mt-4"
           >
-            {loading ? "Submitting..." : "Register"}
+            Register
           </button>
         </form>
       </div>
