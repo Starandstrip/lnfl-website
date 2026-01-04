@@ -4,7 +4,7 @@ export default function AboutPage() {
   return (
     <main className="bg-gradient-to-b from-[#0b1f35] to-black min-h-screen text-white">
       {/* Hero */}
-      <section className="relative min-h-[60vh] flex items-center px-6">
+      <section className="relative py-16 px-6">
         <div className="absolute inset-0">
           <Image
             src="/hero-futsal.jpg"
