@@ -1,52 +1,56 @@
-export default function LeagueFormatPage() {
+export default function FormatPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-[#0b1f35] to-black text-white px-6 py-16">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-10 text-center">
-          LNFL League Format
+    <>
+      {/* Hero */}
+      <section className="bg-gradient-to-b from-[#0b1e2d] to-black py-20 text-center">
+        <h1 className="text-4xl md:text-5xl font-bold">
+          League Format
         </h1>
+        <p className="mt-4 text-gray-300 max-w-2xl mx-auto">
+          Season structure, match format, and competition rules.
+        </p>
+      </section>
 
-        <section className="space-y-10 text-gray-300">
+      {/* Content */}
+      <section className="max-w-4xl mx-auto px-4 py-16">
+        <div className="space-y-8 text-gray-200">
           <div>
-            <h2 className="text-xl text-white font-semibold mb-3">Match Format</h2>
+            <h2 className="text-2xl font-semibold mb-2">
+              Match Structure
+            </h2>
             <ul className="list-disc list-inside space-y-2">
-              <li>2 × 20 minutes matches</li>
+              <li>2 × 20-minute halves</li>
               <li>5-minute half-time break</li>
               <li>No rolling substitutions</li>
-              <li>Neutral referees with cards</li>
+              <li>Refereed matches with cards</li>
             </ul>
           </div>
 
           <div>
-            <h2 className="text-xl text-white font-semibold mb-3">Team Composition</h2>
+            <h2 className="text-2xl font-semibold mb-2">
+              Team Composition
+            </h2>
             <ul className="list-disc list-inside space-y-2">
-              <li>Maximum 15 players per team</li>
-              <li>6 players on field</li>
-              <li>4 bench players per match</li>
-              <li>5 extra players registered before season</li>
-              <li>1 team manager</li>
+              <li>Maximum <strong>15 players</strong> + 1 manager per team</li>
+              <li>6 players on the field</li>
+              <li>Up to 4 bench players per match</li>
+              <li>Up to 5 additional players can be registered before season start</li>
             </ul>
           </div>
 
           <div>
-            <h2 className="text-xl text-white font-semibold mb-3">League Structure</h2>
+            <h2 className="text-2xl font-semibold mb-2">
+              League System
+            </h2>
             <ul className="list-disc list-inside space-y-2">
-              <li>Single league format</li>
-              <li>Home and away matches</li>
-              <li>38 matches per team</li>
-              <li>Top team wins the league</li>
+              <li>Single league table</li>
+              <li>Home & Away (38 matches per team)</li>
+              <li>Top of the table wins the title</li>
+              <li>No playoffs, no penalties</li>
             </ul>
           </div>
-
-          <div>
-            <h2 className="text-xl text-white font-semibold mb-3">Match Days</h2>
-            <ul className="list-disc list-inside space-y-2">
-              <li>Friday, Saturday, Sunday</li>
-              <li>Flexible scheduling with team managers</li>
-            </ul>
-          </div>
-        </section>
-      </div>
-    </main>
+        </div>
+      </section>
+    </>
   );
 }
