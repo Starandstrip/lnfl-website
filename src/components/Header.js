@@ -11,7 +11,7 @@ const navLinks = [
   { name: "League Format", href: "/format" },
   { name: "Fixtures & Policy", href: "/fixtures-policy" },
   { name: "Fees Policy", href: "/fees-policy" },
-  { name: "Location", href: "/locations" },
+  { name: "Locations", href: "/location" },
 ];
 
 export default function Header() {
@@ -27,8 +27,8 @@ export default function Header() {
           <Image
             src="/lnfl-logo.png"
             alt="LNFL"
-            width={48}
-            height={48}
+            width={56}
+            height={56}
             priority
           />
           <span className="text-white font-semibold tracking-wide text-lg">
@@ -72,7 +72,7 @@ export default function Header() {
               transition-all duration-300
             "
           >
-            Register
+            Pre-Register for Season 1
           </Link>
         </nav>
 
@@ -126,7 +126,7 @@ export default function Header() {
               transition-all duration-300
             "
           >
-            Register
+            Pre-Register for Season 1
           </Link>
         </div>
       </div>
