@@ -18,6 +18,7 @@ export default function RegisterPage() {
       type,
       firstName: form.firstName.value,
       lastName: form.lastName.value,
+      age: form.age.value,
       email: form.email.value,
       phone: form.phone.value,
       position: type === "individual" ? form.position?.value : null,
@@ -79,6 +80,7 @@ export default function RegisterPage() {
         <form onSubmit={handleSubmit} className="space-y-4">
           <input name="firstName" placeholder="First Name" required className="w-full border rounded px-4 py-2 text-black" />
           <input name="lastName" placeholder="Last Name" required className="w-full border rounded px-4 py-2 text-black" />
+          <input name="age" type="number" placeholder="Age" required className="w-full border rounded px-4 py-2 text-black" />
           <input name="email" type="email" placeholder="Email" required className="w-full border rounded px-4 py-2 text-black" />
           <input name="phone" placeholder="WhatsApp Number" required className="w-full border rounded px-4 py-2 text-black" />
           <input name="pincode" placeholder="Pincode" required className="w-full border rounded px-4 py-2 text-black" />
