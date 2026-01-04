@@ -3,15 +3,17 @@ import Image from "next/image";
 export default function AboutPage() {
   return (
     <main className="bg-gradient-to-b from-[#0b1f35] to-black min-h-screen text-white">
-      <section className="relative py-16 px-6">
+      {/* Hero */}
+      <section className="relative min-h-[60vh] flex items-center px-6">
         <div className="absolute inset-0">
           <Image
             src="/hero-futsal.jpg"
             alt="About LNFL"
             fill
             className="object-cover opacity-30"
+            priority
           />
-          <div className="absolute inset-0 bg-black/70"></div>
+          <div className="absolute inset-0 bg-black/45"></div>
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto text-center">
@@ -22,6 +24,7 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Content */}
       <section className="py-12 px-6">
         <div className="max-w-4xl mx-auto space-y-6 text-gray-300">
           <p>
