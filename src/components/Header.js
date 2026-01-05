@@ -9,9 +9,6 @@ const navLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "League Format", href: "/format" },
-  { name: "Fixtures & Policy", href: "/fixtures-policy" },
-  { name: "Fees Policy", href: "/fees-policy" },
-  { name: "Locations", href: "/location" },
 ];
 
 export default function Header() {
@@ -22,7 +19,7 @@ export default function Header() {
     <header className="fixed top-0 left-0 w-full z-50 bg-black/90 backdrop-blur border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         
-        {/* Logo (bigger, header height unchanged) */}
+        {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/lnfl-logo.png"
@@ -36,51 +33,38 @@ export default function Header() {
           </span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-2 relative">
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center gap-2">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative px-4 py-2 text-sm font-medium rounded transition-all duration-300
-                  ${
-                    isActive
-                      ? "text-white"
-                      : "text-gray-300 hover:text-white"
-                  }
-                `}
+                className={`relative px-4 py-2 text-sm font-medium rounded transition-all duration-300 ${
+                  isActive
+                    ? "text-white bg-[#c8102e]"
+                    : "text-gray-300 hover:text-white"
+                }`}
               >
-                {isActive && (
-                  <span className="absolute inset-0 bg-[#c8102e] rounded z-[-1] transition-all duration-300"></span>
-                )}
                 {link.name}
               </Link>
             );
           })}
 
-          {/* Register CTA (strong, visible immediately) */}
+          {/* CTA */}
           <Link
             href="/register"
-            className="
-              ml-4 px-6 py-2 rounded
-              bg-[#c8102e] text-white
-              text-sm font-semibold
-              shadow-md shadow-[#c8102e]/30
-              hover:bg-red-700 hover:scale-[1.03]
-              transition-all duration-300
-            "
+            className="ml-4 px-6 py-2 rounded bg-[#c8102e] text-white text-sm font-semibold shadow-md hover:bg-red-700 transition"
           >
             Pre-Register for Season 1
           </Link>
         </nav>
 
-        {/* Mobile Hamburger */}
+        {/* Mobile Menu Button */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-white text-2xl focus:outline-none"
-          aria-label="Toggle menu"
+          className="md:hidden text-white text-2xl"
         >
           ☰
         </button>
@@ -89,7 +73,7 @@ export default function Header() {
       {/* Mobile Menu */}
       <div
         className={`md:hidden overflow-hidden transition-all duration-300 ${
-          open ? "max-h-[500px]" : "max-h-0"
+          open ? "max-h-80" : "max-h-0"
         }`}
       >
         <div className="bg-black border-t border-gray-800 px-4 py-4 space-y-3">
@@ -100,31 +84,21 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className={`block px-4 py-2 rounded transition-all duration-300
-                  ${
-                    isActive
-                      ? "bg-[#c8102e] text-white"
-                      : "text-gray-300 hover:bg-gray-800 hover:text-white"
-                  }
-                `}
+                className={`block px-4 py-2 rounded ${
+                  isActive
+                    ? "bg-[#c8102e] text-white"
+                    : "text-gray-300 hover:bg-gray-800"
+                }`}
               >
                 {link.name}
               </Link>
             );
           })}
 
-          {/* Mobile Register CTA */}
           <Link
             href="/register"
             onClick={() => setOpen(false)}
-            className="
-              block mt-3 px-4 py-2 rounded
-              bg-[#c8102e] text-white
-              text-center font-semibold
-              shadow-md shadow-[#c8102e]/30
-              hover:bg-red-700
-              transition-all duration-300
-            "
+            className="block mt-3 px-4 py-2 rounded bg-[#c8102e] text-white text-center font-semibold"
           >
             Pre-Register for Season 1
           </Link>
