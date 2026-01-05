@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-black border-t border-gray-800 text-gray-400">
+    <footer className="bg-zinc-900 border-t border-gray-800 text-gray-400">
       <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
         
         {/* Brand */}
@@ -43,12 +43,18 @@ export default function Footer() {
           <h4 className="text-white font-semibold mb-3">Policies</h4>
           <ul className="space-y-2 text-sm">
             <li>
-              <Link href="/fixtures-policy" className="hover:text-white transition">
+              <Link
+                href="/fixtures-policy"
+                className="hover:text-white transition"
+              >
                 Fixtures & Rescheduling
               </Link>
             </li>
             <li>
-              <Link href="/fees-policy" className="hover:text-white transition">
+              <Link
+                href="/fees-policy"
+                className="hover:text-white transition"
+              >
                 Fees & Refund Policy
               </Link>
             </li>
