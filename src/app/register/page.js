@@ -127,8 +127,13 @@ export default function RegisterPage() {
           {type === "individual" && (
             <select
               name="position"
+              required
+              defaultValue=""
               className="w-full border rounded px-4 py-2 text-black"
             >
+              <option value="" disabled>
+                Select Position
+              </option>
               <option>Forward</option>
               <option>Midfielder</option>
               <option>Defender</option>

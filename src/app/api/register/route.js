@@ -1,5 +1,4 @@
 import mysql from "mysql2/promise";
-import nodemailer from "nodemailer";
 import { NextResponse } from "next/server";
 
 // MySQL connection
@@ -10,16 +9,8 @@ const db = mysql.createPool({
   database: process.env.DB_NAME,
 });
 
-// Email transporter (Hostinger SMTP)
-/* const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: 587,
-  secure: false,
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-}); */
+// LNFL WhatsApp number (OWNER NUMBER)
+const LNFL_WHATSAPP_NUMBER = "9559991179";
 
 export async function POST(req) {
   try {
@@ -29,6 +20,7 @@ export async function POST(req) {
       type, // "individual" or "team"
       firstName,
       lastName,
+      age,
       email,
       phone,
       position,
@@ -48,12 +40,13 @@ export async function POST(req) {
     // Insert into DB
     const [result] = await db.execute(
       `INSERT INTO registrations
-      (type, first_name, last_name, email, phone, position, team_name, players_count, pincode, consent)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      (type, first_name, last_name, age, email, phone, position, team_name, players_count, pincode, consent)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         type,
         firstName,
         lastName,
+        age || null,
         email,
         phone,
         position || null,
@@ -66,33 +59,23 @@ export async function POST(req) {
 
     const registrationId = result.insertId;
 
-    // Send confirmation email
-    /* await transporter.sendMail({
-      from: `"LNFL" <${process.env.SMTP_USER}>`,
-      to: email,
-      subject: "LNFL Registration Successful",
-      html: `
-        <h2>Thank you for registering with LNFL!</h2>
-        <p><strong>Name:</strong> ${firstName} ${lastName}</p>
-        <p><strong>Registration ID:</strong> LNFL-${registrationId}</p>
-        <p>We will contact you shortly on WhatsApp.</p>
-      `,
-    }); */
-
-    // WhatsApp message
-    const whatsappMessage = encodeURIComponent(`Hi, I am ${firstName}.\n\n` +
+    // WhatsApp message (sent TO LNFL number)
+    const whatsappMessage = encodeURIComponent(
+      `Hi, I am ${firstName} ${lastName}.\n\n` +
       `I am registering for Lucknow Futsal League (LNFL).\n` +
-      `Registration ID: ${registrationId}\n` +
+      `Registration ID: LNFL-${registrationId}\n` +
       `Applying as: ${type === "team" ? "Team" : "Individual"}\n` +
       (type === "individual"
-        ? `Position: ${position}`
-        : `Team Name: ${teamName}\nPlayers Count: ${playersCount}`)
+        ? `Position: ${position}\n`
+        : `Team Name: ${teamName}\nPlayers Count: ${playersCount}\n`) +
+      `Phone: ${phone}\n` +
+      `Pincode: ${pincode}`
     );
 
     return NextResponse.json({
       success: true,
       registrationId: `LNFL-${registrationId}`,
-      whatsappUrl: `https://wa.me/${phone}?text=${whatsappMessage}`,
+      whatsappUrl: `https://wa.me/${LNFL_WHATSAPP_NUMBER}?text=${whatsappMessage}`,
     });
   } catch (error) {
     console.error("Registration error:", error);
