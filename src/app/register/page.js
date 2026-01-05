@@ -48,9 +48,10 @@ export default function RegisterPage() {
     <div className="min-h-screen bg-gradient-to-b from-[#0b1f35] to-black flex items-center justify-center px-4">
       <div className="w-full max-w-xl bg-white rounded-xl shadow-xl p-8">
         <h1 className="text-2xl font-bold text-center mb-6 text-black">
-          LNFL Registration
+          LNFL Pre-Registration (Season 1)
         </h1>
 
+        {/* Type Switch */}
         <div className="flex justify-center gap-3 mb-6">
           <button
             type="button"
@@ -77,16 +78,57 @@ export default function RegisterPage() {
           </button>
         </div>
 
+        {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
-          <input name="firstName" placeholder="First Name" required className="w-full border rounded px-4 py-2 text-black" />
-          <input name="lastName" placeholder="Last Name" required className="w-full border rounded px-4 py-2 text-black" />
-          <input name="age" type="number" placeholder="Age" required className="w-full border rounded px-4 py-2 text-black" />
-          <input name="email" type="email" placeholder="Email" required className="w-full border rounded px-4 py-2 text-black" />
-          <input name="phone" placeholder="WhatsApp Number" required className="w-full border rounded px-4 py-2 text-black" />
-          <input name="pincode" placeholder="Pincode" required className="w-full border rounded px-4 py-2 text-black" />
+          <input
+            name="firstName"
+            placeholder="First Name"
+            required
+            className="w-full border rounded px-4 py-2 text-black"
+          />
+
+          <input
+            name="lastName"
+            placeholder="Last Name"
+            required
+            className="w-full border rounded px-4 py-2 text-black"
+          />
+
+          <input
+            name="age"
+            type="number"
+            placeholder="Age"
+            required
+            className="w-full border rounded px-4 py-2 text-black"
+          />
+
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            required
+            className="w-full border rounded px-4 py-2 text-black"
+          />
+
+          <input
+            name="phone"
+            placeholder="WhatsApp Number"
+            required
+            className="w-full border rounded px-4 py-2 text-black"
+          />
+
+          <input
+            name="pincode"
+            placeholder="Pincode"
+            required
+            className="w-full border rounded px-4 py-2 text-black"
+          />
 
           {type === "individual" && (
-            <select name="position" className="w-full border rounded px-4 py-2 text-black">
+            <select
+              name="position"
+              className="w-full border rounded px-4 py-2 text-black"
+            >
               <option>Forward</option>
               <option>Midfielder</option>
               <option>Defender</option>
@@ -97,21 +139,61 @@ export default function RegisterPage() {
 
           {type === "team" && (
             <>
-              <input name="teamName" placeholder="Team Name" required className="w-full border rounded px-4 py-2 text-black" />
-              <input name="playersCount" type="number" placeholder="Number of players" required className="w-full border rounded px-4 py-2 text-black" />
+              <input
+                name="teamName"
+                placeholder="Team Name"
+                required
+                className="w-full border rounded px-4 py-2 text-black"
+              />
+
+              <input
+                name="playersCount"
+                type="number"
+                placeholder="Number of players"
+                required
+                className="w-full border rounded px-4 py-2 text-black"
+              />
             </>
           )}
 
-          <label className="flex items-center gap-2 text-sm text-black">
-            <input type="checkbox" name="consent" required />
-            I agree to be contacted regarding LNFL.
+          {/* Contact Consent */}
+          <label className="flex items-start gap-2 text-sm text-black">
+            <input type="checkbox" name="consent" required className="mt-1" />
+            <span>
+              I agree to be contacted regarding LNFL updates and communication.
+            </span>
           </label>
 
+          {/* Terms Acceptance */}
+          <label className="flex items-start gap-2 text-sm text-black">
+            <input
+              type="checkbox"
+              name="termsAccepted"
+              required
+              className="mt-1"
+            />
+            <span>
+              I agree to the{" "}
+              <a href="/terms" className="text-[#c8102e] underline">
+                LNFL Terms & Conditions
+              </a>
+              ,{" "}
+              <a href="/fixtures-policy" className="text-[#c8102e] underline">
+                Fixtures Policy
+              </a>
+              , and{" "}
+              <a href="/fees-policy" className="text-[#c8102e] underline">
+                Fees & Refund Policy
+              </a>.
+            </span>
+          </label>
+
+          {/* Submit */}
           <button
             disabled={loading}
-            className="w-full bg-[#c8102e] hover:bg-red-700 text-white font-semibold py-3 rounded"
+            className="w-full bg-[#c8102e] hover:bg-red-700 text-white font-semibold py-3 rounded transition"
           >
-            {loading ? "Submitting..." : "Register"}
+            {loading ? "Submitting..." : "Pre-Register for Season 1"}
           </button>
         </form>
       </div>
