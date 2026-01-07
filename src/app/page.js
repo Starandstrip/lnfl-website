@@ -1,3 +1,12 @@
+export const metadata = {
+  title: "Lucknow Futsal League (LNFL) | Register for Season 1",
+  description:
+    "Lucknow Futsal League (LNFL) is a competitive futsal league in Lucknow for working professionals and football enthusiasts. Register now for Season 1.",
+  alternates: {
+    canonical: "https://www.lnfleague.com/",
+  },
+};
+
 import Link from "next/link";
 import Image from "next/image";
 
