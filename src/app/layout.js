@@ -15,9 +15,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://www.lnfleague.com"),
-  title: "Lucknow Futsal League",
+  title: {
+    default: "Lucknow Futsal League",
+    template: "%s | Lucknow Futsal League",
+  },
   description: "Official website of Lucknow Futsal League",
+  metadataBase: new URL("https://www.lnfleague.com"),
 };
 
 export default function RootLayout({ children }) {
